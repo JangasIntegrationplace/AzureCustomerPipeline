@@ -1,0 +1,11 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [{
+    "name": "msg",
+    "type": "serviceBusTrigger",
+    "direction": "in",
+    "topicName": "",
+    "subscriptionName": "",
+    "connection": "AZ_SERVICE_BUS_CONNECTION_STRING"
+  }]
+}
