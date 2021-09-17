@@ -1,0 +1,22 @@
+# Editor / IDE
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pytest_cache/
+*.pyc
+
+venv/
+.venv/
+.env/
+
+# env
+.env
+
+# Mac OS
+.DS_Store
+
+
+# Random
+sandbox.py
