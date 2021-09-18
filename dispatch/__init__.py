@@ -1,7 +1,6 @@
 import json
 import azure.functions as func
 from azure.servicebus import ServiceBusMessage
-from _core.integrations.pipelines.business_objects import DispatchData
 from _core.integrations.pipelines import DispatchController
 from _core.service_bus import service_bus
 
@@ -10,15 +9,6 @@ REQUIRED_MSG_FIELDS = ("source_thread_id", "source_type", "body", "info", "threa
 
 
 class Controller(DispatchController):
-    def process_data(self):
-        self.data = DispatchData(
-            source_thread_id=self.data["source_thread_id"],
-            source_type=self.data["source_type"],
-            body=self.data["body"],
-            info=self.data["info"],
-            thread_ts=self.data["thread_ts"]
-        )
-
     def handler(self):
         # TODO: Workflow here is bad. Maybe refactor
         super().handler()

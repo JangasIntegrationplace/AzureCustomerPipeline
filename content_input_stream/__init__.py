@@ -13,7 +13,7 @@ class Controller(InputStreamController):
     def process_data(self):
         self.data = InitialInputData(
             source_thread_id=self.data["payload"]["source_thread_id"],
-            source_type=self.data["msg_label"],
+            source_type=self.data["source_type"],
             body=self.data["payload"]["body"],
             info=self.data["payload"]["info"],
             msg_id=self.data["msg_id"],
@@ -42,7 +42,7 @@ def main(msg: func.ServiceBusMessage):
 
     controller = Controller(data={
         "msg_id": msg_id,
-        "msg_label": msg_label,
+        "source_type": msg_label,
         "payload": payload
     })
     controller.handler()

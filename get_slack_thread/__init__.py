@@ -1,7 +1,6 @@
 import json
 import azure.functions as func
 from azure.servicebus import ServiceBusMessage
-from _core.integrations.pipelines.business_objects import GetSlackThreadData
 from _core.integrations.pipelines import GetSlackThreadController
 from _core.service_bus import service_bus
 
@@ -10,14 +9,6 @@ REQUIRED_MSG_FIELDS = ("source_thread_id", "source_type", "body", "info", )
 
 
 class Controller(GetSlackThreadController):
-    def process_data(self):
-        self.data = GetSlackThreadData(
-            source_thread_id=self.data["source_thread_id"],
-            source_type=self.data["source_type"],
-            body=self.data["body"],
-            info=self.data["info"]
-        )
-
     def handler(self):
         # TODO Check thread ts type. It should be flat string.
         thread_ts = super().handler()
