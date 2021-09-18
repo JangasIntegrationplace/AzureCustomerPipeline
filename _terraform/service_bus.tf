@@ -37,6 +37,15 @@ resource "azurerm_servicebus_queue" "slack_threads" {
 }
 
 
+resource "azurerm_servicebus_queue" "dispatch" {
+  name                = "dispatch"
+  resource_group_name = azurerm_resource_group.rg.name
+  namespace_name      = azurerm_servicebus_namespace.sb_namespace.name
+
+  enable_partitioning = true
+}
+
+
 resource "azurerm_servicebus_topic" "sentiment_analysis_inbound" {
   name                = "sentiment_analysis_inbound"
   resource_group_name = azurerm_resource_group.rg.name

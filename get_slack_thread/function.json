@@ -4,7 +4,7 @@
     "name": "msg",
     "type": "serviceBusTrigger",
     "direction": "in",
-    "queue": "slack_threads",
+    "queueName": "slack_threads",
     "connection": "AZ_SERVICE_BUS_CONNECTION_STRING"
   }]
 }

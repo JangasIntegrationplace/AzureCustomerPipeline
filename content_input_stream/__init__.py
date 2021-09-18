@@ -29,7 +29,7 @@ class Controller(InputStreamController):
             "info": self.data.info,
         }
         msg = ServiceBusMessage(body=json.dumps(get_slack_thread_message))
-        service_bus.queue_sender(msg, topic="slack_threads")
+        service_bus.queue_sender(msg, queue="slack_threads")
 
 
 def main(msg: func.ServiceBusMessage):
