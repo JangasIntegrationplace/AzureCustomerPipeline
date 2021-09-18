@@ -1,0 +1,3 @@
+[submodule "_core/integrations"]
+	path = _core/integrations
+	url = git@github.com:JangasIntegrationplace/customer-workflow-integration.git
