@@ -5,3 +5,7 @@ variable "tenant_id" {
 variable "object_id" {
     default = ""
 }
+
+variable "enable_cosmos_db_free_tier" {
+    default = "true"
+}
