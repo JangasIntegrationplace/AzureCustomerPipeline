@@ -17,3 +17,12 @@ msg = {
     body: str
     info: dict
 }
+
+
+## Output
+msg = {
+    source_thread_id: str
+    source_type: str
+    body: str
+    info: dict
+}
