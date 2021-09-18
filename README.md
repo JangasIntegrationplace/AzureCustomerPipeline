@@ -14,3 +14,8 @@ for resources or key vault is included.
 5. If not already happen, init Terraform `terraform init`
 6. [optional for deployment] Validate terraform `terraform validate`
 7. apply Terraform on azure `bash apply_tf.bs`
+
+__note__ I am using my personal tenant id instead of working with RBA
+for my local setup and for git during this hackathon. For getting
+your personal tenant id run `az login`. It will displays on the
+response after login.
