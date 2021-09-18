@@ -27,6 +27,13 @@ resource "azurerm_app_service_plan" "service_plan" {
   }
 }
 
+resource "azurerm_application_insights" "insights" {
+  name                = "finteg-insights"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  application_type    = "web"
+}
+
 resource "azurerm_function_app" "functions" {
   name                       = "finteg-functions"
   location                   = azurerm_resource_group.rg.location
@@ -41,7 +48,9 @@ resource "azurerm_function_app" "functions" {
   }
 
   app_settings = {
-    COSMOSDB_CONNECTION_STRING = "AccountEndpoint=https://${azurerm_cosmosdb_account.db.name}:443/;AccountKey=${azurerm_cosmosdb_account.db.primary_key};"
+    APPINSIGHTS_INSTRUMENTATIONKEY = azurerm_application_insights.insights.instrumentation_key
+    APPLICATIONINSIGHTS_CONNECTION_STRING = "InstrumentationKey=${azurerm_application_insights.insights.instrumentation_key}"
+    COSMOSDB_CONNECTION_STRING = "AccountEndpoint=https://${azurerm_cosmosdb_account.db.name}.documents.azure.com:443/;AccountKey=${azurerm_cosmosdb_account.db.primary_key};"
     SERVICE_BUS_CONNECTION_STRING = azurerm_servicebus_namespace.sb_namespace.default_primary_connection_string
     XGD_CACHE_HOME = "/tmp/.cache"
     FUNCTIONS_EXTENSION_VERSION = "~3"
