@@ -9,5 +9,5 @@ class CosmosDBHandler(BaseHandler):
         container.upsert_item(id=data.msg_id, payload=data.payload)
 
     def create_output_stream(cls, data: dict):
-        # container = cosmosdb.get_container("output", "/msg")
+        # container = cosmosdb.get_container("output", "/source_thread_id")
         pass
