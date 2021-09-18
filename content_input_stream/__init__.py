@@ -22,14 +22,14 @@ class Controller(InputStreamController):
 
     def handler(self):
         super().handler()
-        get_or_create_slack_thread_message = {
+        get_slack_thread_message = {
             "source_thread_id": self.data.source_thread_id,
             "source_type": self.data.source_type,
             "body": self.data.body,
             "info": self.data.info,
         }
-        msg = ServiceBusMessage(body=json.dumps(get_or_create_slack_thread_message))
-        service_bus.topic_sender(msg, topic="unknown_slack_threads")
+        msg = ServiceBusMessage(body=json.dumps(get_slack_thread_message))
+        service_bus.queue_sender(msg, topic="slack_threads")
 
 
 def main(msg: func.ServiceBusMessage):
