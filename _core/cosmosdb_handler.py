@@ -1,12 +1,6 @@
 from _core.integrations.pipelines.db_handler import BaseHandler
-from dataclasses import dataclass
+from _core.integrations.pipelines.business_objects import InitialInputData
 from .cosmosdb import cosmosdb
-
-
-@dataclass
-class InitialInputData:
-    msg_id: str
-    payload: dict
 
 
 class CosmosDBHandler(BaseHandler):
