@@ -3,7 +3,7 @@ import azure.functions as func
 from azure.servicebus import ServiceBusMessage
 from _core.integrations.pipelines.business_objects import InitialInputData
 from _core.integrations.pipelines import InputStreamController
-from _core.service_bus import service_bus
+from _core.service_bus import ServiceBus
 
 
 REQUIRED_MSG_FIELDS = ("source_thread_id", "body", "info", )
@@ -29,7 +29,7 @@ class Controller(InputStreamController):
             "info": self.data.info,
         }
         msg = ServiceBusMessage(body=json.dumps(get_slack_thread_message))
-        service_bus.queue_sender(msg, queue="slack_threads")
+        ServiceBus.get().queue_sender(msg, queue="slack_threads")
 
 
 def main(msg: func.ServiceBusMessage):

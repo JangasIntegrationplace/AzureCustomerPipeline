@@ -2,7 +2,7 @@ import json
 import azure.functions as func
 from azure.servicebus import ServiceBusMessage
 from _core.integrations.pipelines import DispatchController
-from _core.service_bus import service_bus
+from _core.service_bus import ServiceBus
 
 
 REQUIRED_MSG_FIELDS = ("source_thread_id", "source_type", "body", "info", "thread_ts", )
@@ -21,9 +21,9 @@ class Controller(DispatchController):
         }
         msg = ServiceBusMessage(body=json.dumps(dispatch_message))
         if self.data.thread_ts:
-            service_bus.queue_sender(msg, queue="slack_outbound")
+            ServiceBus.get().queue_sender(msg, queue="slack_outbound")
         elif self.data.source_type == "support":
-            service_bus.queue_sender(msg, queue="slack_outbound")
+            ServiceBus.get().queue_sender(msg, queue="slack_outbound")
         else:
             raise ValueError(
                 f"Source Type {self.data.source_type} is not supported yet."
