@@ -51,6 +51,7 @@ resource "azurerm_function_app" "functions" {
     APPINSIGHTS_INSTRUMENTATIONKEY = azurerm_application_insights.insights.instrumentation_key
     APPLICATIONINSIGHTS_CONNECTION_STRING = "InstrumentationKey=${azurerm_application_insights.insights.instrumentation_key}"
     COSMOSDB_CONNECTION_STRING = "AccountEndpoint=https://${azurerm_cosmosdb_account.db.name}.documents.azure.com:443/;AccountKey=${azurerm_cosmosdb_account.db.primary_key};"
+    COSMOSDB_DATABASE_NAME = azurerm_cosmosdb_sql_database.integrations.name
     SERVICE_BUS_CONNECTION_STRING = azurerm_servicebus_namespace.sb_namespace.default_primary_connection_string
     XGD_CACHE_HOME = "/tmp/.cache"
     FUNCTIONS_EXTENSION_VERSION = "~3"
