@@ -14,6 +14,14 @@ venv/
 # env
 .env
 
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+.terraformrc
+terraform.rc
+
 # Mac OS
 .DS_Store
 

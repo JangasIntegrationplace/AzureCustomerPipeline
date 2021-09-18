@@ -4,8 +4,8 @@
     "name": "msg",
     "type": "serviceBusTrigger",
     "direction": "in",
-    "topicName": "",
-    "subscriptionName": "",
+    "topicName": "sentiment_analysis_inbound",
+    "subscriptionName": "sentiment_analysis_func_sub",
     "connection": "AZ_SERVICE_BUS_CONNECTION_STRING"
   }]
 }

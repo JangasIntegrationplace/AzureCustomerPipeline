@@ -4,8 +4,8 @@
     "name": "msg",
     "type": "serviceBusTrigger",
     "direction": "in",
-    "topicName": "",
-    "subscriptionName": "",
+    "topicName": "review_inbound",
+    "subscriptionName": "review_input_stream_sub",
     "connection": "AZ_SERVICE_BUS_CONNECTION_STRING"
   }]
 }

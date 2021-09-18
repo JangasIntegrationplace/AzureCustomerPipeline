@@ -4,8 +4,7 @@
     "name": "msg",
     "type": "serviceBusTrigger",
     "direction": "in",
-    "topicName": "",
-    "subscriptionName": "",
+    "queueName": "slack_outbound",
     "connection": "AZ_SERVICE_BUS_CONNECTION_STRING"
   }]
 }
