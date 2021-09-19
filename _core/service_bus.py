@@ -4,12 +4,13 @@ from azure.servicebus import ServiceBusClient, ServiceBusMessage
 class ServiceBus:
     instance: "ServiceBus" = None
 
-    def get(self) -> "ServiceBus":
-        if not self.instance:
+    @classmethod
+    def get(cls):
+        if not cls.instance:
             # again - brrrrr... hacky and ugly and unsecure
             from .settings import SERVICE_BUS_CONNECTION_STRING
-            self.instance = ServiceBus(SERVICE_BUS_CONNECTION_STRING)
-        return self.instance
+            cls.instance = ServiceBus(SERVICE_BUS_CONNECTION_STRING)
+        return cls.instance
 
     def __init__(self, connection_string: str):
         self.client = ServiceBusClient.from_connection_string(connection_string)

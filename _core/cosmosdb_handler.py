@@ -7,16 +7,19 @@ from .cosmosdb import CosmosDB
 
 
 class CosmosDBHandler(BaseHandler):
+    @classmethod
     def create_initial_input(cls, data: InitialInputData):
         container = CosmosDB.get().get_container("initial_input", "/msg")
         container.upsert_item({"id": data.msg_id, "payload": data.payload})
 
+    @classmethod
     def retrieve_slack_thread(cls, source_thread_id):
         container = CosmosDB.get().get_container("output", "/source_thread_id")
         query = f'SELECT o.thread_ts FROM output o WHERE o.id="{source_thread_id}"'
         items = list(container.query_items(query=query))
         return None if len(items) == 0 else items[0]
 
+    @classmethod
     def create_output_stream(cls, data: SlackOutboundMessageData):
         container = CosmosDB.get().get_container("output", "/source_thread_id")
         container.upsert_item({

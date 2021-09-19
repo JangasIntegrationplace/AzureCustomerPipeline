@@ -1,11 +1,13 @@
 import json
 import azure.functions as func
 from azure.servicebus import ServiceBusMessage
+from _core.settings import init_submodules
 from _core.integrations.pipelines.business_objects import InitialInputData
 from _core.integrations.pipelines import InputStreamController
 from _core.service_bus import ServiceBus
 
 
+init_submodules()
 REQUIRED_MSG_FIELDS = ("source_thread_id", "body", "info", )
 
 

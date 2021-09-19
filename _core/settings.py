@@ -14,5 +14,7 @@ SLACK_CHANNELS = {
     "support": os.getenv("SLACK_SUPPORT_CHANNEL"),
 }
 
-pipeline_settings.DB_HANDLER = CosmosDBHandler
-pipeline_settings.SLACK_BOT_TOKEN = os.getenv("SLACK_BOT_TOKEN")
+
+def init_submodules():
+    pipeline_settings.DB_HANDLER = CosmosDBHandler
+    pipeline_settings.SLACK_BOT_TOKEN = os.getenv("SLACK_BOT_TOKEN")
