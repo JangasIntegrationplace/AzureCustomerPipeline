@@ -28,7 +28,7 @@ def msg(payload):
 
 
 @patch("_core.service_bus.ServiceBusClient", ServiceBusClient)
-# @patch("_core.cosmosdb.CosmosClient", CosmosClient)
+@patch("_core.cosmosdb.CosmosClient", CosmosClient)
 def test_function(msg):
     get_slack_thread(msg)
     assert states.LAST_SEND_MESSAGE is not None

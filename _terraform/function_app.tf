@@ -41,6 +41,8 @@ resource "azurerm_function_app" "functions" {
   app_service_plan_id        = azurerm_app_service_plan.service_plan.id
   storage_account_name       = azurerm_storage_account.storage.name
   storage_account_access_key = azurerm_storage_account.storage.primary_access_key
+  version                    = "~3"
+  os_type                    = "linux" 
 
   site_config {
     linux_fx_version          = "PYTHON|3.8"
@@ -52,7 +54,7 @@ resource "azurerm_function_app" "functions" {
     APPLICATIONINSIGHTS_CONNECTION_STRING = "InstrumentationKey=${azurerm_application_insights.insights.instrumentation_key}"
     COSMOSDB_CONNECTION_STRING = "AccountEndpoint=https://${azurerm_cosmosdb_account.db.name}.documents.azure.com:443/;AccountKey=${azurerm_cosmosdb_account.db.primary_key};"
     COSMOSDB_DATABASE_NAME = azurerm_cosmosdb_sql_database.integrations.name
-    SERVICE_BUS_CONNECTION_STRING = azurerm_servicebus_namespace.sb_namespace.default_primary_connection_string
+    AZ_SERVICE_BUS_CONNECTION_STRING = azurerm_servicebus_namespace.sb_namespace.default_primary_connection_string
     XGD_CACHE_HOME = "/tmp/.cache"
     FUNCTIONS_EXTENSION_VERSION = "~3"
     FUNCTIONS_WORKER_RUNTIME = "python"

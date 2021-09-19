@@ -4,3 +4,4 @@ azure-servicebus==7.3.3
 pytest==6.2.5
 dataclasses-jsonschema==2.14.1
 slack-sdk==3.10.1
+python-dotenv==0.19.0
