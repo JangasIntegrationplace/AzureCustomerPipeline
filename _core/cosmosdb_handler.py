@@ -24,9 +24,19 @@ class CosmosDBHandler(BaseHandler):
         container = CosmosDB.get().get_container("output", "/source_thread_id")
         container.upsert_item({
             "id": data.source_thread_id,
+            "source_thread_id": data.source_thread_id,
+            "thread_ts": data.thread_ts,
             "source_type": data.source_type,
             "info": data.info,
             "channel": data.channel,
-            "text": data.text,
+            "text": data.text
+        })
+
+        container = CosmosDB.get().get_container("identify", "/thread_ts")
+        container.upsert_item({
+            "id": data.thread_ts,
+            "source_thread_id": data.source_thread_id,
             "thread_ts": data.thread_ts,
+            "source_type": data.source_type,
+            "channel": data.channel
         })
