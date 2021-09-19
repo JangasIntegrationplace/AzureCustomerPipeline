@@ -18,6 +18,15 @@ msg = {
     info: dict
 }
 
+## Dispatch
+msg = {
+    source_thread_id: str
+    source_type: str
+    body: str
+    info: dict
+    thread_ts: str
+}
+
 
 ## Output
 msg = {
