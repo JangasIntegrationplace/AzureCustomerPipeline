@@ -1,3 +1,7 @@
+# Azure Feedback Integration
+
+![project architecture](Architecture.png "Project Architecture")
+
 ## Terraform
 This project includes Infrastructure as Code (IaC) by using
 Terraform. Since the focus of this project should be a poc
