@@ -14,6 +14,10 @@ SLACK_CHANNELS = {
     "support": os.getenv("SLACK_SUPPORT_CHANNEL"),
 }
 
+WEB_ENDPOINTS = {
+    "support": os.getenv("WEB_SUPPORT_API"),
+}
+
 
 def init_submodules():
     pipeline_settings.DB_HANDLER = CosmosDBHandler

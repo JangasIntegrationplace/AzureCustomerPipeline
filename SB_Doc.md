@@ -36,3 +36,12 @@ msg = {
     info: dict
     thread_ts: str
 }
+
+
+## Reverse Dispatch
+msg = {
+    source_thread_id: str
+    source_type: str
+    body: str
+    thread_ts: str
+}

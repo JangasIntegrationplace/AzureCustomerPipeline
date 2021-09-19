@@ -40,3 +40,10 @@ class CosmosDBHandler(BaseHandler):
             "source_type": data.source_type,
             "channel": data.channel
         })
+
+    @classmethod
+    def retrieve_slack_thread_by_thread_ts(cls, thread_ts):
+        container = CosmosDB.get().get_container("identify", "/thread_ts")
+        query = f'SELECT i.source_thread_id, i.source_type FROM identify i WHERE i.id="{thread_ts}"'
+        items = list(container.query_items(query=query))
+        return None if len(items) == 0 else items[0]
