@@ -11,9 +11,12 @@ from . import main as content_input_stream
 @pytest.fixture
 def payload():
     return {
-        "source_thread_id": uuid.uuid4().hex,
-        "body": "Hello Test!",
-        "info": {"username": "Janis"}
+        "source_thread_id": "6870f642-1969-11ec-9e1e-0242c0a89004",
+        "body": "This should be proceed from unittest!",
+        "info": {
+            "username": "azure",
+            "email": "azure@outlook.com"
+        },
     }
 
 

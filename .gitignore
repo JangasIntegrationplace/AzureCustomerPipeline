@@ -1,5 +1,5 @@
 # Editor / IDE
-.vscode/
+
 .idea/
 
 # Python
@@ -28,3 +28,5 @@ terraform.rc
 
 # Random
 sandbox.py
+
+.python_packages

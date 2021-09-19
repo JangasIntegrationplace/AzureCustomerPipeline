@@ -11,11 +11,11 @@ from . import main as dispatch
 @pytest.fixture
 def payload():
     return {
-        "source_thread_id": uuid.uuid4().hex,
-        "source_type": "support",
-        "body": "Hello Test!",
-        "info": {"username": "Janis"},
-        "thread_ts": uuid.uuid4().hex
+        'source_thread_id': 'a2d57c7203b145a59ac44ba3e0f08309',
+        'source_type': 'support',
+        'body': 'Hello Test!',
+        'info': {'username': 'Janis'},
+        'thread_ts': None
     }
 
 

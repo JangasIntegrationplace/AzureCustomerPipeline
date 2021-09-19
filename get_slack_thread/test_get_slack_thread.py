@@ -11,10 +11,10 @@ from . import main as get_slack_thread
 @pytest.fixture
 def payload():
     return {
-        "source_thread_id": uuid.uuid4().hex,
-        "source_type": "support",
-        "body": "Hello Test!",
-        "info": {"username": "Janis"}
+        'source_thread_id': 'a2d57c7203b145a59ac44ba3e0f08309',
+        'source_type': 'support',
+        'body': 'Hello Test!',
+        'info': {'username': 'Janis'},
     }
 
 
@@ -28,7 +28,7 @@ def msg(payload):
 
 
 @patch("_core.service_bus.ServiceBusClient", ServiceBusClient)
-@patch("_core.cosmosdb.CosmosClient", CosmosClient)
+# @patch("_core.cosmosdb.CosmosClient", CosmosClient)
 def test_function(msg):
     get_slack_thread(msg)
     assert states.LAST_SEND_MESSAGE is not None

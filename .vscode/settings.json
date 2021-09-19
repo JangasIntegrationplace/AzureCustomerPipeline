@@ -1,0 +1,19 @@
+{
+  "python.pythonPath": "venv/bin/python3",
+  "python.analysis.extraPaths": [ ],
+  "python.testing.pytestArgs": [ ],
+  "python.testing.pytestEnabled": true,
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Args": [
+    "--max-line-length=89"
+  ],
+  "python.testing.unittestEnabled": false,
+  "azureFunctions.deploySubpath": ".",
+  "azureFunctions.scmDoBuildDuringDeployment": true,
+  "azureFunctions.pythonVenv": "venv",
+  "azureFunctions.projectLanguage": "Python",
+  "azureFunctions.projectRuntime": "~3",
+  "debug.internalConsoleOptions": "neverOpen"
+}
