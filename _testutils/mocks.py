@@ -1,3 +1,4 @@
+import uuid
 from . import states
 
 
@@ -57,3 +58,24 @@ class CosmosClient:
 
     def get_database_client(self, database):
         return DatabaseProxy(database)
+
+
+class SlackResponse:
+    def __init__(self, action: str, json: dict):
+        self.data = {
+            "ts": uuid.uuid4().hex
+        }
+
+
+class SlackWebClient:
+    def __init__(self, token, *args, **kwargs):
+        pass
+
+    def chat_postMessage(self, channel, text, thread_ts, *args, **kwargs):
+        data = {
+            "channel": channel,
+            "text": text,
+            "thread_ts": thread_ts,
+        }
+        states.LAST_SEND_SLACK_MESSAGE = data
+        return SlackResponse("chat.postMessage", json=data)

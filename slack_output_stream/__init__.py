@@ -1,15 +1,17 @@
 import json
 import azure.functions as func
+from _core.settings import init_submodules
 from _core.integrations.pipelines import OutputStreamController
 from _core.settings import SLACK_CHANNELS
 
 
+init_submodules()
 REQUIRED_MSG_FIELDS = ("source_thread_id", "source_type", "body", "info", "thread_ts", )
 
 
 class Controller(OutputStreamController):
     def get_channel(self):
-        if self.data.source_type == "support":
+        if self.data["source_type"] == "support":
             return SLACK_CHANNELS["support"]
         else:
             raise ValueError("Message Not supported yet")

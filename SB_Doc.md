@@ -34,4 +34,5 @@ msg = {
     source_type: str
     body: str
     info: dict
+    thread_ts: str
 }
