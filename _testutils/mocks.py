@@ -35,6 +35,9 @@ class ContainerProxy:
     def upsert_item(self, body):
         states.LAST_UPSERT_ITEM = {"body": body, "database": self.database}
 
+    def query_items(self, query, *args, **kwars):
+        return []
+
 
 class DatabaseProxy:
     def __init__(self, database, *args, **kwargs):
